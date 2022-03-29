@@ -1,0 +1,259 @@
+{% extends 'Base.html'%}
+{% load static %}
+{% block agents %}active{% endblock %}
+{% block content %}
+{% include 'navbar_1.html' %}
+<div class="page-title-area">
+    <div class="row align-items-center">
+        <div class="col-sm-6">
+            <div class="breadcrumbs-area clearfix">
+                <h4 class="page-title pull-left">Dashboard</h4>
+                <ul class="breadcrumbs pull-left">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{% url 'agents' %}"> Agents</a></span></li>
+                    <li><span>{{agent.agent_name}}</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6 clearfix">
+            <div class="user-profile pull-right">
+                <img class="avatar user-thumb" src="/static/assets/images/author/avatar.png" alt="avatar">
+                <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{request.user}} <i class="fa fa-angle-down"></i></h4>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Message</a>
+                    <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item" href="#">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div class="main-content-container">
+   
+        <div class="card mt-5">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <h3 class="header-title">Mark</h3>
+                    </div>
+                    
+                    <div class="col-sm-12 col-md-6 " >
+                        <a href="Agents"><button class="btn btn-secondary  btn-xs mb-1" style="float: right;" type="submit"><i class="fa fa-arrow-left mr-1"></i> Back</button>  </a>                     
+                    </div>
+                    
+                </div>
+                <hr>
+                    <form class="needs-validation" novalidate="">
+                    <div class="row rowleft">
+                    <!-- column 1 start  -->
+                    <div class="col-sm-3">
+                        <div class="card card-bordered text-center">
+                            <img class="card-img-top img-fluid" src="http://dummyimage.com/120x120/000/fff" alt="image">
+                            <div class="card-body">
+                                <h5> Mark </h5>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <a href="Agent_Photo" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
+                              </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="single-table">
+                            <div class="table-responsive">
+                                <table class="table table-borderless">
+                                    
+                                    <tbody>
+                                      <tr>
+                                        <th scope="row">AGENT TYPE </th>
+                                        <td>{{agent.agent_type}}</td>  </tr>
+                                      <tr>
+                                        <th scope="row">NRIC/FIN#</th>
+                                        <td>{{agent.NRIC}}</td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">AGENT REG#</th>
+                                        <td colspan="2">{{agent.agent_registration }}</td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">CONTACT PERSON NAME</th>
+                                        <td colspan="2">{{agent.contact_person_name}}</td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">MOBILE</th>
+                                        <td colspan="2">{{agent.contact_person_number}}</td>
+                                      </tr>
+                                      <!-- <tr>
+                                        <th scope="row">FAX</th>
+                                        <td colspan="2">123454</td>
+                                      </tr> -->
+                                      <tr>
+                                        <th scope="row">EMAIL ID</th>
+                                        <td colspan="2">{{agent.email}}</td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">GENDER </th>
+                                        <td>{{agent.gender}}</td>  </tr>
+                                      
+                                    </tbody>
+                                  </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="single-table">
+                            <div class="table-responsive">
+                                <table class="table table-borderless">
+                                    
+                                    <tbody>
+                                      <tr>
+                                            <th scope="row">ADDRESS</th>
+                                            <td>{{agent.address}}</td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">COUNTRY</th>
+                                        <td colspan="2">{{agent.country}}</td>
+                                      </tr>
+                                      <!-- <tr>
+                                        <th scope="row">WEBSITE</th>
+                                        <td colspan="2">www.abc.com</td>
+                                      </tr> -->
+                                      <!-- <tr>
+                                        <th scope="row">REMARKS</th>
+                                        <td colspan="2">asbc</td>
+                                      </tr> -->
+                                      
+                                      
+                                    </tbody>
+                                  </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+
+            <!-- Info tabs start -->
+            <div class="col-lg-12 mt-3 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <a class="nav-item nav-link active" id="nav-maids-tab" data-toggle="tab" href="#nav-maids" role="tab" aria-controls="nav-maids" aria-selected="true"><i class="fa fa-female"></i> &nbsp; Maid</a>
+                                <a class="nav-item nav-link" id="nav-documents-tab" data-toggle="tab" href="#nav-documents" role="tab" aria-controls="nav-documents" aria-selected="false"><i class="fa fa-file-text"></i>&nbsp;Documents</a>
+                            </div>
+                        </nav>
+
+                        <div class="tab-content mt-3 mb-3" id="nav-tabContent">
+
+
+
+
+
+                            <div class="tab-pane fade show active" id="nav-maids" role="tabpanel" aria-labelledby="nav-maids-tab">
+                                <div class="col-sm-12">
+                                    <div class="single-table">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover  text-center">
+                                                <thead class="text-uppercase">
+                                                    <tr>
+                                                        <th >S/N</th>
+                                                        <th >REF#</th>
+                                                        <th >MAID NAME</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <tr>  
+                                                            <td colspan="3"> No Records Found</td>
+                                                        </tr>  
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade show" id="nav-documents" role="tabpanel" aria-labelledby="nav-documents-tab">
+                                <div class="d-flex justify-content-end">
+                                    <button type="button" class="btn btn-success btn-xs mb-3" data-toggle="modal" data-target="#agentAddDocument"> <i class="fa fa-edit"></i> &nbsp;<strong>EDIT</strong></button>
+                                </div>
+            
+                                <!-- Modal start -->
+                                <div class="modal fade" id="agentAddDocument">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Add Document</h5>
+                                                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="form-group">
+                                                        <label for="agencyAccreditationName"> <strong>Document Name</strong></label>
+                                                        <input type="email" class="form-control" id="agencyAccreditationName" aria-describedby="emailHelp" placeholder="">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for=""><strong>Upload Document</strong></label>
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input" id="inputGroupFile02">
+                                                            <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                                                        </div>
+                                                    </div>
+                                                    <h6>(Only doc,pdf,jpg,png files are allowed)</h6>
+                                                   
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-success">Save Data</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal end -->
+                                <div class="col-sm-12">
+                                    <div class="single-table">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover  text-center">
+                                                <thead class="text-uppercase">
+                                                    <tr>
+                                                        <th >S/N</th>
+                                                        <th >REF#</th>
+                                                        <th >MAID NAME</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <tr>
+                                                            <th> 1 </th>  
+                                                            <td>Abc</td>
+                                                            <td> &nbsp;<a href=""><i class="fa fa-download"></i></a> &nbsp;<a href=""><i class="fa fa-exclamation-circle"></i> </a>&nbsp; <a href="" data-toggle="modal" data-target="#agentAddDocument"><i class="fa fa-pencil"></i></a> &nbsp;<a href=""><i class="fa fa-trash"></i></a></td>
+                                                        </tr>  
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+                                
+
+
+
+
+
+
+
+</div>
+                     
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'Base.html' %}
+{% load static %}
+{% block agents %}active{% endblock %}
+{% block content %}
+{% include 'navbar_1.html' %}
+ <!-- page title area start -->
+<div class="page-title-area">
+    <div class="row align-items-center">
+        <div class="col-lg-6 mt-3 mb-3">
+            <div class="breadcrumbs-area clearfix">
+                <h5 class="page-title pull-left">My Agency</h5>
+                <ul class="breadcrumbs pull-left">
+                    <li><a href="Agents_Details">Agents</a></li>
+                    <li><span>Edit Photo</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+ <!-- page title area end -->
+
+
+
+<!-- Edit Logo form start -->
+<div class="col-12 mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="header-title">Upload Agent Photo</h4>
+            <form>
+                <div class="form-row align-items-center ">
+
+                    <div class="col-sm-2 my-1 ">
+                        <label class="" for=""><h6> Agency Image </h6></label>
+                    </div>
+
+                    <div class="input-group col-lg-6 ">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile02">
+                            <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 my-2">
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- basic form end -->
+
+
+
+<div class="col-12 mt-5"><div class="d-flex justify-content-center mt-5"> <a href="Agent_Details"><button type="submit" class="btn btn-secondary">Back</button></a></div></div>
+
+
+
+
+{% endblock%}
