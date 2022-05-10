@@ -1,0 +1,1143 @@
+{% extends 'Base.html' %}
+{% load static %}
+{% block users %}active{% endblock %}
+{% block content %}
+
+{% include 'navbar_1.html' %}
+
+<!-- page title area start -->
+
+<div class="page-title-area">
+    <div class="row align-items-center">
+        <div class="col-sm-6">
+            <div class="breadcrumbs-area clearfix">
+                <h4 class="page-title pull-left">Dashboard</h4>
+                <ul class="breadcrumbs pull-left">
+                    <li><a href="index.html">Home</a></li>
+                    <li><span>Users</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6 clearfix">
+            <div class="user-profile pull-right">
+                <img class="avatar user-thumb" src="/static/assets/images/author/avatar.png" alt="avatar">
+                <!-- sdfd -->
+                <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{request.user}}<i class="fa fa-angle-down"></i></h4>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Message</a>
+                    <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item" href="#">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div> 
+    <!-- page title area end -->
+
+    <div class="main-content-inner">
+
+        <div class="col-12 mt-3">
+            <h5>User Roles And Permission</h5>
+            <div class="card mt-2">
+                <div class="card-body">
+                    
+                        <div class="form-row align-items-center">
+                            
+                            <div class="col-sm-4 my-1">
+                                
+                                <label  for="inlineFormInputName"> <strong><h6>User Role :</h6></strong> </label>
+                                <input type="text" class="form-control form-control-sm" id="inlineFormInputName" placeholder="Sales Person">
+                            </div>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12 mt-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">Select Modules : </h4>
+                    
+                    <div id="accordion1" class="according accordion-s3 gradiant-bg">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <form class="needs-validation" action="add_user_permissions" method="POST" novalidate="">{% csrf_token %}
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="card-link collapsed" data-toggle="collapse" href="#accordion11" aria-expanded="false"><i class="fa fa-folder"></i>&nbsp; Dashboard</a>
+                                    </div>
+                                    <div id="accordion11" class="collapse" data-parent="#accordion4" >
+                                        <div class="card-body">
+
+                                            <div id="accordion2" class="according accordion-s2">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion111"><i class="fa fa-folder"></i>&nbsp;Dashboard Chart</a>
+                                                    </div>
+                                                    <div id="accordion111" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Sales Expenses</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Invoice Status</label>
+                                                                </div>
+                                                                
+                                                                
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="card-link collapsed" data-toggle="collapse" href="#accordion12" aria-expanded="false"><i class="fa fa-folder"></i>&nbsp;My Agency</a>
+                                    </div>
+                                    <div id="accordion12" class="collapse" data-parent="#accordion4" >
+                                        <div class="card-body">
+                                            <div id="accordion2" class="according accordion-s2">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion112"><i class="fa fa-folder"></i>&nbsp;Agency</a>
+                                                    </div>
+                                                    <div id="accordion112" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">                                                    
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                <label class="form-check-label" for="exampleCheck1">View Agency</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                <label class="form-check-label" for="exampleCheck1">Edit Agency</label>
+                                                            </div>                                                                                                                                                                                        
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion13"><i class="fa fa-folder"></i>&nbsp; Users</a>
+                                    </div>
+                                    <div id="accordion13" class="collapse" data-parent="#accordion4">
+                                        <div class="card-body">
+                                            <div id="accordion2" class="according accordion-s2">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion113"><i class="fa fa-folder"></i>&nbsp;User Roles</a>
+                                                    </div>
+                                                    <div id="accordion113" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View User Roles</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Add User Roles</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Edit User Roles</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Suspend User Roles</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Delete User Roles</label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion114"><i class="fa fa-folder"></i>&nbsp;Users </a>
+                                                    </div>
+                                                        <div id="accordion114" class="collapse show" data-parent="#accordion2">
+                                                            <div class="card-body">
+                                                                
+                                                                    <div class="form-check">
+                                                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                        <label class="form-check-label" for="exampleCheck1">View User Roles</label>
+                                                                    </div>
+                                                                    <div class="form-check">
+                                                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                        <label class="form-check-label" for="exampleCheck1">Add User Roles</label>
+                                                                    </div>
+                                                                    <div class="form-check">
+                                                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                        <label class="form-check-label" for="exampleCheck1">Edit User Roles</label>
+                                                                    </div>
+                                                                    <div class="form-check">
+                                                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                        <label class="form-check-label" for="exampleCheck1">Suspend User Roles</label>
+                                                                    </div>
+                                                                    <div class="form-check">
+                                                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                        <label class="form-check-label" for="exampleCheck1">Delete User Roles</label>
+                                                                    </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion14"><i class="fa fa-folder"></i>&nbsp;Staff</a>
+                                    </div>
+                                    <div id="accordion14" class="collapse" data-parent="#accordion4">
+                                        <div class="card-body">
+                                            <div id="accordion2" class="according accordion-s2">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion115"><i class="fa fa-folder"></i>&nbsp;Staff</a>
+                                                    </div>
+                                                    <div id="accordion115" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Staff</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Add Staff</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Edit Staff</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Suspend Staff</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Delete Staff </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Staff Details</label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion15"><i class="fa fa-folder"></i>&nbsp;FDWs</a>
+                                    </div>
+                                    <div id="accordion15" class="collapse" data-parent="#accordion4">
+                                        <div class="card-body">
+                                            <div id="accordion2" class="according accordion-s2">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion116"><i class="fa fa-folder"></i>&nbsp;FDWs</a>
+                                                    </div>
+                                                    <div id="accordion116" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View FDWs</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Add FDWs</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Edit FDWs</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Suspend FDWs</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Delete FDWs </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View FDWs Details</label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion16"><i class="fa fa-folder"></i>&nbsp;Employers</a>
+                                    </div>
+                                    <div id="accordion16" class="collapse" data-parent="#accordion4">
+                                        <div class="card-body">
+                                            <div id="accordion2" class="according accordion-s2">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion117"><i class="fa fa-folder"></i>&nbsp;Employers</a>
+                                                    </div>
+                                                    <div id="accordion117" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Employers</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Add Employers</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Edit Employers</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Delete Employers </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Employers Details</label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion17"><i class="fa fa-folder"></i>&nbsp;Agents</a>
+                                    </div>
+                                    <div id="accordion17" class="collapse" data-parent="#accordion4">
+                                        <div class="card-body">
+                                            <div id="accordion2" class="according accordion-s2">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion118"><i class="fa fa-folder"></i>&nbsp;Agents</a>
+                                                    </div>
+                                                    <div id="accordion118" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Agents</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Add Agents</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Edit Agents</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Delete Agents </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Agents Details</label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion18"><i class="fa fa-folder"></i>&nbsp; Contracts</a>
+                                    </div>
+                                    <div id="accordion18" class="collapse" data-parent="#accordion4">
+                                        <div class="card-body">
+                                            <div id="accordion2" class="according accordion-s2">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion119"><i class="fa fa-folder"></i>&nbsp;Contracts</a>
+                                                    </div>
+                                                    <div id="accordion119" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Contracts</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Add Contracts</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Edit Contracts</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Delete Contracts </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Contracts Details</label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion19"><i class="fa fa-folder"></i>&nbsp;Documents</a>
+                                    </div>
+                                    <div id="accordion19" class="collapse" data-parent="#accordion4">
+                                        <div class="card-body">
+                                            <div id="accordion2" class="according accordion-s2">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion120"><i class="fa fa-folder"></i>&nbsp;Documents</a>
+                                                    </div>
+                                                    <div id="accordion120" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Documents</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Add Documents</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Edit Documents</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Delete Documents </label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion20"><i class="fa fa-folder"></i>&nbsp;Invoices</a>
+                                    </div>
+                                    <div id="accordion20" class="collapse" data-parent="#accordion4">
+                                        <div class="card-body">
+                                            <div id="accordion2" class="according accordion-s2">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion1201"><i class="fa fa-folder"></i>&nbsp;Credit Terms</a>
+                                                    </div>
+                                                    <div id="accordion1201" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Credit Terms</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Add Credit Terms</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Edit Credit Terms</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Suspend Credit Terms</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Delete Credit Terms </label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion1202"><i class="fa fa-folder"></i>&nbsp;Invoice Item</a>
+                                                    </div>
+                                                    <div id="accordion1202" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Invoice Item</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Add Invoice Item</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Edit Invoice Item</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Suspend Invoice Item</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Delete Invoice Item </label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion1203"><i class="fa fa-folder"></i>&nbsp;Invoice Notes Settings</a>
+                                                    </div>
+                                                    <div id="accordion1203" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Edit Invoice Notes Settings</label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion1204"><i class="fa fa-folder"></i>&nbsp;Invoice Settings</a>
+                                                    </div>
+                                                    <div id="accordion1204" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Edit Invoice Settings</label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion1205"><i class="fa fa-folder"></i>&nbsp;Invoice Term Settings</a>
+                                                    </div>
+                                                    <div id="accordion1205" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Edit Invoice Term Settings</label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion1206"><i class="fa fa-folder"></i>&nbsp;Invoices </a>
+                                                    </div>
+                                                    <div id="accordion1206" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Invoice </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Add Invoice </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Edit Invoice </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Delete Invoice  </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Invoice Details</label>
+                                                                </div><div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Draft Invoices </label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="card-link collapsed" data-toggle="collapse" href="#accordion21" aria-expanded="false"><i class="fa fa-folder"></i>&nbsp;Credit Notes</a>
+                                    </div>
+                                    <div id="accordion21" class="collapse" data-parent="#accordion4" >
+                                        <div class="card-body">
+                                            <div id="accordion2" class="according accordion-s2">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion121"><i class="fa fa-folder"></i>&nbsp;Credit Notes</a>
+                                                    </div>
+                                                    <div id="accordion121" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Credit Notes</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Add Credit Notes</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Edit Credit Notes</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Delete Credit Notes </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Credit Notes Details</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Draft Credit Notes </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Edit Credit Notes Settings</label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="card-link collapsed" data-toggle="collapse" href="#accordion22" aria-expanded="false"><i class="fa fa-folder"></i>&nbsp;Payments</a>
+                                    </div>
+                                    <div id="accordion22" class="collapse" data-parent="#accordion4" >
+                                        <div class="card-body">
+                                            <div id="accordion2" class="according accordion-s2">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion1221"><i class="fa fa-folder"></i>&nbsp;Payment Mode</a>
+                                                    </div>
+                                                    <div id="accordion1201" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Payment Mode</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Add Payment Mode</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Edit Payment Mode</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Suspend Payment Mode</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Delete Payment Mode </label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion1222"><i class="fa fa-folder"></i>&nbsp;Payment Settings</a>
+                                                    </div>
+                                                    <div id="accordion1222" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Edit Payments Settings</label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion1223"><i class="fa fa-folder"></i>&nbsp;Payments</a>
+                                                    </div>
+                                                    <div id="accordion1223" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Payments</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Record Payments</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Delete Payments</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Payment Details</label>
+                                                                </div>
+                                                                
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion23"><i class="fa fa-folder"></i>&nbsp; Expenses</a>
+                                    </div>
+                                    <div id="accordion23" class="collapse" data-parent="#accordion4">
+                                        <div class="card-body">
+                                            <div id="accordion2" class="according accordion-s2">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion1231"><i class="fa fa-folder"></i>&nbsp;Expenses</a>
+                                                    </div>
+                                                    <div id="accordion1231" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Expenses</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Add Expenses</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Edit Expenses</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Delete Expenses </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Suspend Expenses</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Expenses Details</label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion1232"><i class="fa fa-folder"></i>&nbsp;Expenses Category</a>
+                                                    </div>
+                                                    <div id="accordion1232" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Expenses Category</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Add Expenses Category</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Edit Expenses Category</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Delete Expenses Category </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Suspend Expenses Category</label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion24"><i class="fa fa-folder"></i>&nbsp; Leaves</a>
+                                    </div>
+                                    <div id="accordion24" class="collapse" data-parent="#accordion4">
+                                        <div class="card-body">
+                                            <div id="accordion2" class="according accordion-s2">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion1241"><i class="fa fa-folder"></i>&nbsp;Leave Type Settings</a>
+                                                    </div>
+                                                    <div id="accordion1241" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Leave Type</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Add Leave Type</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Edit Leave Type</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Delete Leave Type </label>
+                                                                </div>
+                                                                
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion1242"><i class="fa fa-folder"></i>&nbsp;Leaves</a>
+                                                    </div>
+                                                    <div id="accordion1242" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Leaves</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Add Leaves</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Edit Leaves</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Delete Leaves </label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion1243"><i class="fa fa-folder"></i>&nbsp;Public Holiday Settings</a>
+                                                    </div>
+                                                    <div id="accordion1243" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Public Holiday</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Add Public Holiday</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Edit Public Holiday</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Delete Public Holiday</label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion25"><i class="fa fa-folder"></i>&nbsp;Reports</a>
+                                    </div>
+                                    <div id="accordion25" class="collapse" data-parent="#accordion4">
+                                        <div class="card-body">
+                                            <div id="accordion2" class="according accordion-s2">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion1251"><i class="fa fa-folder"></i>&nbsp;Credit Notes</a>
+                                                    </div>
+                                                    <div id="accordion1251" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Credit Note</label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion1252"><i class="fa fa-folder"></i>&nbsp;Credit Notes Reports</a>
+                                                    </div>
+                                                    <div id="accordion1252" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Credit Notes</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Export Credit Notes</label>
+                                                                </div>
+                                                                
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion1253"><i class="fa fa-folder"></i>&nbsp;Expense Reports</a>
+                                                    </div>
+                                                    <div id="accordion1253" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Expenses</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Export Expenses Excel</label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion1254"><i class="fa fa-folder"></i>&nbsp;Invoice Report</a>
+                                                    </div>
+                                                    <div id="accordion1254" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Invoice</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Export Invoices Excel</label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion1255"><i class="fa fa-folder"></i>&nbsp;Payment Report</a>
+                                                    </div>
+                                                    <div id="accordion1255" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Payments</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Export Payments Excel</label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion26"><i class="fa fa-folder"></i>&nbsp;My Subscriptions</a>
+                                    </div>
+                                    <div id="accordion26" class="collapse" data-parent="#accordion4">
+                                        <div class="card-body">
+                                            <div id="accordion2" class="according accordion-s2">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion126"><i class="fa fa-folder"></i>&nbsp;Sunscriptions</a>
+                                                    </div>
+                                                    <div id="accordion126" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Subscriptions</label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion27"><i class="fa fa-folder"></i>&nbsp;View Enquires</a>
+                                    </div>
+                                    <div id="accordion27" class="collapse" data-parent="#accordion4">
+                                        <div class="card-body">
+                                            <div id="accordion2" class="according accordion-s2">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion127"><i class="fa fa-folder"></i>&nbsp;Enquires</a>
+                                                    </div>
+                                                    <div id="accordion127" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Request Maid</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Contact Agency</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Website Enquires</label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion28"><i class="fa fa-folder"></i>&nbsp; Submit Ticket</a>
+                                    </div>
+                                    <div id="accordion28" class="collapse" data-parent="#accordion4">
+                                        <div class="card-body">
+                                            <div id="accordion2" class="according accordion-s2">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#accordion127"><i class="fa fa-folder"></i>&nbsp;Submit Ticket</a>
+                                                    </div>
+                                                    <div id="accordion127" class="collapse show" data-parent="#accordion2">
+                                                        <div class="card-body">
+                                                            
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">View Submit Ticket</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Add Submit Ticket</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Edit Submit Ticket</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                    <label class="form-check-label" for="exampleCheck1">Submit Ticket Details</label>
+                                                                </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary btn-sm mt-2"><i class="fa fa-"></i> &nbsp;<strong>Save And Update</strong></button>
+            </div>
+        </div>
+    </form>
+    </div>  
+<!-- container div end -->
+{% endblock%}

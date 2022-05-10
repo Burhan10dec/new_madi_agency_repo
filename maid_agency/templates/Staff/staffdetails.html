@@ -1,0 +1,340 @@
+{% extends 'Base.html'%}
+{% load static %}
+{% block staff %}active{% endblock %}
+{% block content %}
+{% include 'navbar_1.html' %}
+<div class="page-title-area">
+    <div class="row align-items-center">
+        <div class="col-sm-6">
+            <div class="breadcrumbs-area clearfix">
+                <h4 class="page-title pull-left">Dashboard</h4>
+                <ul class="breadcrumbs pull-left">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="{% url 'staffs'%}"> Staffs </a></span></li>
+                    <li><span>Neha Lunia</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6 clearfix">
+            <div class="user-profile pull-right">
+                <img class="avatar user-thumb" src="/static/assets/images/author/avatar.png" alt="avatar">
+                <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{request.user}}<i class="fa fa-angle-down"></i></h4>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Message</a>
+                    <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item" href="#">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+{%  if messages %}
+    {%for message in messages%}
+        <div class="alert {{message.tags}} alert-dismissible fade show mt-2 ml-5 w-50 position-absolute" style="z-index: 1;" id="notification" role="alert">            
+            {{message}}
+            
+        </div>
+    {%endfor%}
+{%endif%}
+
+<div class="main-content-container">
+    <div class="col-12">
+        <div class="card mt-5">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <h3 class="header-title">Staff details </details></h3>
+                    </div>
+                    
+                    <div class="col-sm-12 col-md-6 " >
+                        <a href="{% url 'staffs' %}"><button class="btn btn-secondary  btn-xs mb-1" style="float: right;" type="submit"><i class="fa fa-arrow-left mr-1"></i> Back</button></a>
+                        <a href="{% url 'edit_staff' staff.id %}"><button class="btn btn-secondary mr-1 btn-xs mb-1 " style="float: right;" type="button"><i class="fa fa-edit mr-1"></i> Edit</button></a>
+                    </div>
+                    
+                </div>
+                <hr>          
+                    <div class="row">
+                        <!-- column 1 start  -->                        
+                        <div class="col-sm-3">
+                            <div class="card card-bordered text-center">
+                                {% if staff.staff_image %}
+                                    <img class="card-img-top img-fluid" style="height: 250px;" src="{{staff.staff_image.url}}" alt="image">
+                                {% else %}
+                                    <img class="card-img-top img-fluid" style="height: 250px;" src="http://dummyimage.com/200x200/000/fff" alt="image">
+                                {%endif%}
+                                <div class="card-body">
+                                    <h5> {{staff.staff_name}} </h5>
+                                </div>
+                                <div class="card-footer text-muted">
+                                    <a href="" data-toggle="modal" data-target="#edit_staff_image" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>                                    
+                                    {% include 'Staff/modal/Staff_image_modal.html' %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- cloumn 2 start  -->
+                        <div class="col">
+                            
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">REG#</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{staff.Registration}}</dd>                            
+                            </dl>
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">NRIC/FIN</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{staff.NRIC}}<dd>                            
+                            </dl>
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">DATE OF BIRTH</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{staff.dob}}</dd>                            
+                            </dl>
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">GENDER</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{staff.gender}}<dd>                            
+                            </dl>
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">Nationality</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{staff.country}}</dd>                            
+                            </dl>
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">Citizenship</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{staff.citizenship}}</dd>                            
+                            </dl>                            
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">Employee Id</dt>                                
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{staff.Emp_id}}</dd>                            
+                            </dl>
+                            
+
+                        </div>
+                        
+            <!-- column 2 end  -->
+                        <!-- column 3 start  -->
+                        <div class="col">
+
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">Designation</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{staff.designation}}</dd>                            
+                            </dl>                        
+
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">Date of joining</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{staff.date_of_joining}}</dd>                            
+                            </dl>
+                            
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">Email</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{staff.email}}</dd>                            
+                            </dl>
+
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">Mobile</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{staff.mobile_no}}</dd>                            
+                            </dl>
+
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">Address</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{staff.address}}</dd>                            
+                            </dl>
+
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">Branches</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{staff.branch}}</dd>                            
+                            </dl>
+                        </div>
+                    </div>
+                    
+                     <!-- left align tab start -->
+                     <div class="col mt-1">
+                        <div class="card" >
+                            <div class="card-body" >
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                   
+                                    <li class="nav-item" >
+                                        <a class="nav-link"  data-toggle="tab" href="#ho" id="ho_tab" role="tab" aria-controls="profile" aria-selected="false"><i class="ti-na"></i> Leaves</a>
+                                    </li>                                    
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#documents" role="tab" aria-controls="contact" aria-selected="false"><i class="fa fa-file"></i> Documents</a>                                        
+                                    </li>
+                                </ul>
+                                <div class="tab-content mt-3" id="myTabContent" >
+                                    <div class="tab-pane fade show active"  id="ho" role="tabpanel" aria-labelledby="ho-tab">
+                                        <form>
+                    
+                                            <div class="form-row align-items-center">
+                                                <div class="col-sm-3 my-1">
+                                                   
+                                                    <input class="form-control" type="date" value="2018-03-05" id="example-date-input">
+                                                </div>
+                        
+                                                <div class="dropdown col-lg-6 col-md-4 col-sm-6">
+                                                    <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown">
+                                                        Select leave type
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="#">Annual leave</a>
+                                                        <a class="dropdown-item" href="#">Child care leave</a>
+                                                        <a class="dropdown-item" href="#">Infant care leave</a>
+                                                        <a class="dropdown-item" href="#">Off-in-leave</a>
+                                                        <a class="dropdown-item" href="#">Sick leave</a>
+                                                    </div>
+                                                </div>                                            
+                                                <div class="col-auto my-1">
+                                                    <button type="submit" class="btn btn-primary"> <span class="ti-search"></span> &nbsp; Search</button>
+                                                </div>                                            
+                                            </div>
+                                        </form>
+
+                                        <table class="table table-striped table-bordered table-hover ilist">
+                                            <thead>
+                                            <tr> 
+                                            <form role="form" id="search_form"></form>
+                                            <br><br>
+                                                
+                                                  
+                                                  </tr>
+                                              <tr>
+                                            
+                                                <th class="list_title" width="5%">S/N</th>
+                                                <th class="list_title" width="10%">Leave Type</th> 
+                                                <th class="list_title" width="10%">Start Date</th>
+                                                <th class="list_title" width="10%">End Date</th>
+                                                <th class="list_title" width="10%">Status</th>
+                                                <th class="list_title" width="10%">Action</th>
+                                               
+                                              </tr>
+                                            </thead>
+                                            <tbody>                                             
+                                                <tr class="list_row1">
+                                                <td colspan="6" >No records found</td>
+                                                </tr>
+                                            </tbody>
+                                          </table>
+                                      
+                                    </div>                                
+                                <!-- Documents -->
+                                    <div class="tab-pane fade" id="documents" role="tabpanel" aria-labelledby="profile-tab">                                        
+                                        
+                                    <!-- button to triger edit modal -->
+                                    <div class="d-flex justify-content-end">
+                                    <button type="button" class="btn btn-success btn-flat btn-xs" data-toggle="modal" data-target="#docmod"> <i class="fa fa-plus mr-1"></i> Add Document</button>
+                                    </div>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="docmod">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">ADD DOCUMENT</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                                                    </div>
+                                                    
+                                                    <div class="modal-body">
+                                                        <form class="needs-validation" enctype="multipart/form-data"  action="{% url 'add_staff_doc' staff.id %}" method="POST" novalidate>{% csrf_token %}
+                                                        <div class="form-group">
+                                                            <label for="example-text-input" class="col-form-label">Document Name</label>
+                                                            <input class="form-control form-control-sm" type="text" value="" name="doc_title" id="example-text-input">
+                                                        </div>
+                                                        <div class="form-group ">
+                                                            <label for="validationCustom01" class="col-form-label"> <strong>Upload Document</strong></label>                                                        
+                                                            <input type="file" class="form-control form-control-sm" name="staff_doc"  required="">                                                        
+                                                        </div>
+                                                            
+                                                        <h7>( Only doc,pdf,jpg,png files are allowed ) </h7><br><br>
+
+                                                        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-save"></i> Save data</button>
+                                                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+                                                    </form>
+                                                    </div>                                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="rowleft"> 
+                                            <!-- document table start  -->
+                                            <div class="col">
+                                                <div class="card">
+                                                    <div class="card-body">                                                        
+                                                        <div class="single-table">
+                                                            <div class="table-responsive">
+                                                                <table class="table text-center">
+                                                                    <thead class="text-uppercase bg-info">
+                                                                        <tr class="text-white">
+                                                                            <th scope="col">S/N</th>
+                                                                            <th scope="col">DOCUMENT TITLE</th>
+                                                                            <th scope="col">ACTIONS</th>                                                                            
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        {% for doc in staff_docs %}
+                                                                        <tr>
+                                                                            <th scope="row">1</th>
+                                                                            <td>{{doc.title}}</td>
+                                                                            <td><a href="{{doc.doc.url}}"><i class="fa fa-download mr-1 fa-lg" ></i></a>
+                                                                                 <a href="" data-toggle="modal" data-target="#editdocmod{{doc.id}}"><i class="fa fa-edit mr-1 fa-lg" ></i></a>
+                                                                                 <a href="{% url 'delete_staff_doc' doc.id %}" onclick="return confirm('Do you confirm to delete - {{doc.title}} ?');"><i class="ti-trash fa-lg"></i></a>
+                                                                            </td>                                                                            
+                                                                        </tr>                   
+                                                                        <div class="modal fade" id="editdocmod{{doc.id}}">
+                                                                            <div class="modal-dialog">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <h5 class="modal-title">EDIT DOCUMENT</h5>
+                                                                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                                                                                    </div>                                                                                    
+                                                                                    <div class="modal-body">
+                                                                                        <form class="needs-validation" enctype="multipart/form-data"  action="{% url 'add_staff_doc' staff.id %}" method="POST" novalidate>{% csrf_token %}
+                                                                                        <div class="form-group">
+                                                                                            <label for="example-text-input" class="col-form-label">Document Name</label>
+                                                                                            <input class="form-control form-control-sm" type="text" value="{{doc.title}}" name="doc_title" id="example-text-input">
+                                                                                        </div>
+                                                                                        <a href="{{doc.doc.url}}">view document </a>
+                                                                                        <div class="form-group ">
+                                                                                            <label for="validationCustom01" class="col-form-label"> <strong>Upload Document</strong></label>                                                        
+                                                                                            <input type="file" class="form-control form-control-sm" name="staff_doc"  required="">                                                        
+                                                                                        </div>
+                                                                                            
+                                                                                        <h7>( Only doc,pdf,jpg,png files are allowed ) </h7><br><br>
+                                
+                                                                                        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-save"></i> Save data</button>
+                                                                                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+                                                                                    </form>
+                                                                                    </div>                                                                    
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>   
+                                                                        {%endfor%}                                                  
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- document table end -->
+                                        </div>   
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    <!-- left align tab end -->
+                    
+              
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

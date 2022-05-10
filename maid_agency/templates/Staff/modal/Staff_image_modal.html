@@ -1,0 +1,24 @@
+<!-- <div class="row"> -->
+    <div class="modal fade" id="edit_staff_image">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Staff Image</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col">
+                        <form class="needs-validation" enctype="multipart/form-data" method="POST" action="{% url 'save_staff_image' staff.id%}" nonvaidate>{% csrf_token %}
+                            <label for="validationCustom01" class="col-form-label">Upload Image</label>
+                            <input type="file" class="form-control form-control-sm" id="validationCustom01" name="staff_image"  required="">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+                                <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-cloud-upload"></i> Upload</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>                                            
+        </div>
+    </div>
+<!-- </div> -->

@@ -1,0 +1,29 @@
+<!-- <div class="row">     -->
+    <div class="modal fade" id="document_edit_modal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Document</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col">
+                        <form class="needs-validation" enctype="multipart/form-data" method="POST" action="{% url 'edit_document' doc.id%}" nonvaidate>{% csrf_token %}
+
+                            <label for="validationCustom01" class="col-form-label">Document Name</label>
+                            <input type="text" class="form-control form-control-sm" id="validationCustom01" value="{{doc.title}}" name="doc_title" placeholder="title" required="">                        
+                            <a class="col-form" href="{{doc.Doc.url}}">View Document</a>
+                            <br>
+                            <label for="validationCustom01" class="col-form-label">Upload Document</label>
+                            <input type="file" class="form-control form-control-sm" id="validationCustom01" name="fdw_document" value="{{doc.Doc.name}}" required="">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>                                            
+        </div>
+    </div>
+<!-- </div> -->

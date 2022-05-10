@@ -1,0 +1,583 @@
+{% extends 'Base.html'%}
+{% load static %}
+{% block fdws %}active{% endblock %}
+{% block content %}
+{% include 'navbar_1.html' %}
+<div class="page-title-area">
+    <div class="row align-items-center">
+        <div class="col-sm-6">
+            <div class="breadcrumbs-area clearfix">
+                
+                <ul class="breadcrumbs pull-left">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{% url 'fdws' %}"> FDWs</a></span></li>
+                    <li><span>{{data.maid_name}}</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6 clearfix">
+            <div class="user-profile pull-right">
+                <img class="avatar user-thumb" src="/static/assets/images/author/avatar.png" alt="avatar">
+                <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{request.user}}<i class="fa fa-angle-down"></i></h4>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Message</a>
+                    <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%  if messages %}
+{%for message in messages%}
+    <div class="alert {{message.tags}} alert-dismissible fade show mt-2 ml-5 w-50 position-absolute" style="z-index: 1;" id="notification" role="alert">            
+        {{message}}
+        
+    </div>
+{%endfor%}
+{%endif%}
+<div class="main-content-container">
+    <div class="col-12">
+        <div class="card mt-5">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <h3 class="header-title">{{data.maid_name}}</h3>
+                    </div>
+                    
+                    <div class="col-sm-12 col-md-6 " >
+                        <a href="{% url 'fdws' %}"><button class="btn btn-secondary  btn-xs mb-1" style="float: right;" type="button"><i class="fa fa-arrow-left mr-1"></i> Back</button></a>
+                        <a href="{% url 'edit_FDW' data.id %}"><button class="btn btn-secondary mr-1 btn-xs mb-1 " style="float: right;" type="button"><i class="fa fa-edit mr-1"></i> Edit</button></a>
+                    </div>
+                    
+                </div>
+                <!-- <hr> -->                    
+                    <div class="row">
+                        <!-- column 1 start  -->
+                        <div class="col-sm-3">
+                            <div class="card card-bordered text-center">
+                                {% if data.maid_image %}
+                                    <img class="card-img-top img-fluid" style="height: 250px;" src="{{data.maid_image.url}}" alt="image">
+                                {% else %}
+                                    <img class="card-img-top img-fluid" style="height: 250px;" src="http://dummyimage.com/200x200/000/fff" alt="image">
+                                {%endif%}
+                                <div class="card-body">
+                                    <h5> {{data.maid_name}} </h5>
+                                </div>
+                                <div class="card-footer text-muted">
+                                    <a href="{% url 'edit_FDW_images' data.id %}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
+                                    
+                                  </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-3">
+                            <div class="row rowleft">
+                            {% if data.maid_image %}
+                            <img src="{{data.maid_image.url}}" >
+                            {%else%}
+                            <img src="http://dummyimage.com/200x200/000/fff">
+                            {%endif%}
+                        </div>
+
+                            <a href="{% url 'edit_FDW_images' data.id %}"><button class="btn btn-secondary mt-1 btn-sm" type="button"><i class="fa fa-edit mr-1"></i> Edit</button></a>
+
+                        </div> -->
+                        <!-- cloumn 2 start  -->
+                        <div class="col">
+                            
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">MAID NAME</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;"> {{data.maid_name}}</dd>                            
+                            </dl>
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">DATE OF BIRTH</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.dob}}</dd>                            
+                            </dl>
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">NATIONALITY</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.country}}</dd>                            
+                            </dl>
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">HEIGHT(IN CM)</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.height}}</dd>                            
+                            </dl>
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">EDUCATION</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.education}}</dd>                            
+                            </dl>
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">NUMBER OF CHILDREN</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.no_of_children}}</dd>                            
+                            </dl>
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">NUMBER OF SIBLINGS</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.no_of_sibling}}</dd>                            
+                            </dl>
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">SPOKEN LANGUAGE</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">
+                                    {% for lan in list %}
+                                    {{ lan }}
+                                    {% endfor %}
+                                </dd>                            
+                            </dl>
+
+                        </div>
+                        
+            <!-- column 2 end  -->
+                        <!-- column 3 start  -->
+                        <div class="col">
+
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">TYPE OF MAID</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.maid_type}}</dd>                            
+                            </dl>
+
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">RELIGION</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.religion}}</dd>                            
+                            </dl>
+                            
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">WEIGHT (IN KG)</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.weight}}</dd>                            
+                            </dl>
+
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">MARITAL STATUS</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.martial_status}}</dd>                            
+                            </dl>
+
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">AGES OF CHILDREN</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.ages_of_children}}</dd>                            
+                            </dl>
+
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">PLACE OF BIRTH</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.place_of_birth}}</dd>                            
+                            </dl>
+
+                            <dl class="dl-horizontal row rowleft">
+                                <dt class="col-sm-3">AGENT NAME</dt>
+                                <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.agent_name}}</dd>                            
+                            </dl>
+                            
+                        </div>
+                    </div>
+                    
+                     <!-- left align tab start -->
+                     <div class="col mt-1">
+                        <div class="card" >
+                            <div class="card-body" >
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#immigration" role="tab" aria-controls="home" aria-selected="true"><i class="fa fa-exclamation-circle"></i> Immigration</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#home_country" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-home"></i> Home Country</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#medical" role="tab" aria-controls="contact" aria-selected="false"><i class="fa fa-plus-square"></i> Medical</a>                                        
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#rest_day" role="tab" aria-controls="contact" aria-selected="false"><i class="fa fa-bed"></i> Rest Days</a>                                        
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#willingness" role="tab" aria-controls="contact" aria-selected="false"><i class="fa fa-star"></i> Willingness</a>                                        
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#documents" role="tab" aria-controls="contact" aria-selected="false"><i class="fa fa-file"></i> Documents</a>                                        
+                                    </li>
+                                </ul>
+                                <div class="tab-content mt-3" id="myTabContent" >
+                                    <div class="tab-pane fade show active"  id="immigration" role="tabpanel" aria-labelledby="home-tab">
+                                        {% include 'FDWs/FDW_models/immigration.html' %}                                        
+                                        <div class="row" >
+                                            
+                                            <div class="col" >
+                                                <dl class="dl-horizontal row rowleft">
+                                                    <dt class="col-sm-4">PASSPORT NO</dt>
+                                                    <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                                    <dd class="col-sm-3" style="border-left:2px solid lightgrey;"> {{data.immigration.passport_no}} </dd>                            
+                                                </dl>
+                                                <dl class="dl-horizontal row rowleft">
+                                                    <dt class="col-sm-4">PASSPORT EXPIRY DATE</dt>
+                                                    <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                                    <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.immigration.passport_expiry_date}}</dd>                            
+                                                </dl>
+                                                <dl class="dl-horizontal row rowleft">
+                                                    <dt class="col-sm-4">MALAYSIAN ID TYPE</dt>
+                                                    <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                                    <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.immigration.malaysian_id_type}}</dd>                            
+                                                </dl>
+                                                <dl class="dl-horizontal row rowleft">
+                                                    <dt class="col-sm-4">FIN NO</dt>
+                                                    <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                                    <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.immigration.FIN}}</dd>                            
+                                                </dl>
+                                                <dl class="dl-horizontal row rowleft">
+                                                    <dt class="col-sm-4">IMMIGRATION PASS TYPE</dt>
+                                                    <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i></dd> -->                                                    
+                                                    <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.immigration.imigration_pass_type}}</dd>                            
+                                                </dl>
+                                            </div>                                                                                        
+                                            <div class="col border-left-0">                                            
+                                                <dl class="dl-horizontal row rowleft">
+                                                    <dt class="col-sm-4">SVP / SPECIAL PASS EXPIRY DATE</dt>
+                                                    <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                                    <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.immigration.svp}}</dd>                            
+                                                </dl>
+                                                <dl class="dl-horizontal row rowleft">
+                                                    <dt class="col-sm-4">WORK PERMIT NO</dt>
+                                                    <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                                    <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.immigration.work_permit_no}}</dd>                            
+                                                </dl>
+                                                <dl class="dl-horizontal row rowleft">
+                                                    <dt class="col-sm-4">WORK PERMIT EXPIRY DATE</dt>
+                                                    <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                                    <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.immigration.work_permit_ep_date}}</dd>                            
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="home_country" role="tabpanel" aria-labelledby="profile-tab">                                        
+                                        {% include 'FDWs/FDW_models/home_country.html' %}
+                                        <dl class="dl-horizontal row rowleft">
+                                            <dt class="col-sm-4">RESIDENTIAL ADDRESS IN HOME COUNTRY</dt>
+                                            <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                            <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.home_country.residential_address}}</dd>                            
+                                        </dl>
+                                        <dl class="dl-horizontal row rowleft">
+                                            <dt class="col-sm-4">NAME OF PORT / AIRPORT TO BE REPATRIATED TO</dt>
+                                            <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                            <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.home_country.airport}}</dd>                            
+                                        </dl>
+                                        <dl class="dl-horizontal row rowleft">
+                                            <dt class="col-sm-4">HOME COUNTRY</dt>
+                                            <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                            <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.home_country.home_country}}</dd>                            
+                                        </dl>
+                                        <dl class="dl-horizontal row rowleft">
+                                            <dt class="col-sm-4">CONTACT PERSON IN HOME COUNTRY</dt>
+                                            <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                            <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.home_country.contact_person_name}}</dd>                            
+                                        </dl>
+                                        <dl class="dl-horizontal row rowleft">
+                                            <dt class="col-sm-4">CONTACT NUMBER IN HOME COUNTRY</dt>
+                                            <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i></dd>                                             -->
+                                            <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.home_country.contact_person_no}}</dd>                            
+                                        </dl>
+                                        <dl class="dl-horizontal row rowleft">
+                                            <dt class="col-sm-4">SECONDARY CONTACT NUMBER IN HOME COUNTRY</dt>
+                                            <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i></dd>                                             -->
+                                            <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.home_country.contact_person_no_2}}</dd>                            
+                                        </dl>
+                                        <dl class="dl-horizontal row rowleft">
+                                            <dt class="col-sm-4">E-MAIL ID</dt>
+                                            <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i></dd>                                             -->
+                                            <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.home_country.email}}</dd>                            
+                                        </dl>                                                                                    
+                                    </div>
+                                
+                                    <div class="tab-pane fade" id="medical" role="tabpanel" aria-labelledby="contact-tab">
+                                        {% include 'FDWs/FDW_models/Edit_medical.html' %}
+                                        <div class="row">
+                                           <div class="col">
+                                                <dl class="dl-horizontal row rowleft">
+                                                    <dt class="col-sm-4">MENTAL ILLNESS</dt>                                                                                
+                                                    <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{% if data.medical.mental_illness == True %} 
+                                                    Yes 
+                                                {% elif data.medical.mental_illness == False %}
+                                            No 
+                                        {% else %}
+                                    {%endif%} </dd>                                                                              
+                                                </dl>
+                                                <dl class="dl-horizontal row rowleft">
+                                                    <dt class="col-sm-4">EPILEPSY</dt>                                                                                
+                                                    <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{% if data.medical.epilepsy == True %} 
+                                                    Yes 
+                                                {% elif data.medical.epilepsy == False %}
+                                            No 
+                                        {% else %}
+                                    {%endif%} </dd>                            
+                                                </dl>
+                                                <dl class="dl-horizontal row rowleft">
+                                                    <dt class="col-sm-4">ASTHMA</dt>                                                                                
+                                                    <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{% if data.medical.asthma == True %} 
+                                                    Yes 
+                                                {% elif data.medical.asthma == False %}
+                                            No 
+                                        {% else %}
+                                    {%endif%} </dd>                            
+                                                </dl>
+                                                <dl class="dl-horizontal row rowleft">
+                                                    <dt class="col-sm-4">DIABETES</dt>                                                                                
+                                                    <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{% if data.medical.diabetes == True %} 
+                                                    Yes 
+                                                {% elif data.medical.diabetes == False %}
+                                            No 
+                                        {% else %}
+                                    {%endif%} </dd>                            
+                                                </dl>
+                                                <dl class="dl-horizontal row rowleft">
+                                                    <dt class="col-sm-4">HYPERRTENSION</dt>                                                                                
+                                                    <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{% if data.medical.hyper_tension == True %} 
+                                                    Yes 
+                                                {% elif data.medical.hyper_tension == False %}
+                                            No 
+                                        {% else %}
+                                    {%endif%} </dd>                            
+                                                </dl>
+                                                <dl class="dl-horizontal row rowleft">
+                                                    <dt class="col-sm-4">TUBERCULOSIS</dt>                                                                                
+                                                    <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{% if data.medical.tuberculosis == True %} 
+                                                    Yes 
+                                                {% elif data.medical.tuberculosis == False %}
+                                            No 
+                                        {% else %}
+                                    {%endif%} </dd>                            
+                                                </dl>
+                                            </div>
+
+                                            <div class="col">
+                                                <dl class="dl-horizontal row rowleft">
+                                                    <dt class="col-sm-4">HEART DISEASE</dt>                                                                                
+                                                    <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{% if data.medical.heart_disease == True %} 
+                                                    Yes 
+                                                {% elif data.medical.heart_disease == False %}
+                                            No 
+                                        {% else %}
+                                    {%endif%} </dd>                            
+                                                </dl>
+                                                <dl class="dl-horizontal row rowleft">
+                                                    <dt class="col-sm-4">MALAIA</dt>                                                                                
+                                                    <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{% if data.medical.maleria == True %} 
+                                                    Yes 
+                                                {% elif data.medical.maleria == False %}
+                                            No 
+                                        {% else %}
+                                    {%endif%} </dd>                            
+                                                </dl>
+                                                <dl class="dl-horizontal row rowleft">
+                                                    <dt class="col-sm-4">OPERATIONS</dt>                                                                                
+                                                    <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{% if data.medical.operations == True %} 
+                                                    Yes 
+                                                {% elif data.medical.operations == False %}
+                                            No 
+                                        {% else %}
+                                    {%endif%} </dd>                            
+                                                </dl>
+                                                <dl class="dl-horizontal row rowleft">
+                                                    <dt class="col-sm-4">OTHERS</dt>                                                                                
+                                                    <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{ data.medical.others }}</dd>                            
+                                                </dl>
+                                                <dl class="dl-horizontal row rowleft">
+                                                    <dt class="col-sm-4">ALLERGIES(IF ANY)</dt>                                                                                
+                                                    <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{ data.medical.allergies}}</dd>                            
+                                                </dl>
+                                                <dl class="dl-horizontal row rowleft">
+                                                    <dt class="col-sm-4">PHYSICAL DISABILITIES</dt>                                                                                
+                                                    <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.medical.physical_disabilities}}</dd>                            
+                                                </dl>
+                                            </div>
+
+                                            <div class="col">
+                                                <dl class="dl-horizontal row rowleft">
+                                                    <dt class="col-sm-5">DIETARY RESTRICTIONS</dt>                                                                                
+                                                    <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.medical.dietary_restrictions}}</dd>                            
+                                                </dl>
+                                                <!-- <dl class="dl-horizontal row rowleft">
+                                                    <dt class="col-sm-5">FOOD HANDLING PREFERENCES</dt>                                                                                
+                                                    <dd class="col-sm-3" style="border-left:2px solid lightgrey;"></dd>                            
+                                                </dl> -->
+                                                
+                                            </div>
+                                            
+                                        </div>                                        
+                                    </div>
+                                    <!-- rest day  -->
+                                    <div class="tab-pane fade" id="rest_day" role="tabpanel" aria-labelledby="profile-tab">                                        
+                                        {% include 'FDWs/FDW_models/Edit_rest_days.html' %}
+                                        <dl class="dl-horizontal row rowleft">
+                                            <dt class="col-sm-4">PREFERRED NO. OF REST DAYS / MONTH</dt>
+                                            <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                            <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.rest_days.preferred_no_of_rest_days}}</dd>                            
+                                        </dl>
+                                        <dl class="dl-horizontal row rowleft">
+                                            <dt class="col-sm-4">WILLING TO WORK ON OFF-DAYS</dt>
+                                            <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                            <dd class="col-sm-3" style="border-left:2px solid lightgrey;">
+                                                {% if data.rest_days.willing_to_work_on_off_days == True %}
+                                                Yes
+                                                {% elif data.rest_days.willing_to_work_on_off_days == False %}
+                                                No
+                                                {% else %}
+                                            {% endif %}</dd>                            
+                                        </dl>
+                                        <dl class="dl-horizontal row rowleft">
+                                            <dt class="col-sm-4">CURRENT SALARY</dt>
+                                            <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                            <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.rest_days.current_salary}}</dd>                            
+                                        </dl>
+                                        <dl class="dl-horizontal row rowleft">
+                                            <dt class="col-sm-4">EXPECTED SALARY</dt>
+                                            <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                            <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.rest_days.expected_salary}}</dd>                            
+                                        </dl>
+                                        <dl class="dl-horizontal row rowleft">
+                                            <dt class="col-sm-4">ANY OTHER REMARKS</dt>                                            
+                                            <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{{data.rest_days.remark}}</dd>                            
+                                        </dl>
+                                        
+                                        
+                                    </div>
+                                <!-- Willingness -->
+                                    <div class="tab-pane fade" id="willingness" role="tabpanel" aria-labelledby="profile-tab">                                        
+                                        {% include 'FDWs/FDW_models/Edit_willingness.html' %}
+                                        <dl class="dl-horizontal row rowleft">
+                                            <dt class="col-sm-4">ABLE TO HANDLE PORK</dt>
+                                            <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                            <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{% if data.willingness.handle_pork == True %} Yes 
+                                                {%elif data.willingness.handle_pork == False %}
+                                            No 
+                                        {% else %}
+                                    {% endif %} </dd>                            
+                                        </dl>
+                                        <dl class="dl-horizontal row rowleft">
+                                            <dt class="col-sm-4">ABLE TO EAT PORK</dt>
+                                            <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                            <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{% if data.willingness.eat_pork == True %} Yes 
+                                                {%elif data.willingness.eat_pork == False %}
+                                            No 
+                                        {% else %}
+                                    {% endif %} </dd>                            
+                                        </dl>
+                                        <dl class="dl-horizontal row rowleft">
+                                            <dt class="col-sm-4">ABLE TO HANDLE BEEF</dt>
+                                            <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                            <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{% if data.willingness.handle_beef == True %} Yes 
+                                                {%elif data.willingness.handle_beef == False %}
+                                            No 
+                                        {% else %}
+                                    {% endif %} </dd>                            
+                                        </dl>
+                                        <dl class="dl-horizontal row rowleft">
+                                            <dt class="col-sm-4">ABLE TO EAT BEEF</dt>
+                                            <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i> </dd> -->
+                                            <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{% if data.willingness.eat_beef == True %} Yes 
+                                                {%elif data.willingness.eat_beef == False %}
+                                            No 
+                                        {% else %}
+                                    {% endif %} </dd>                            
+                                        </dl>
+                                        <dl class="dl-horizontal row rowleft">
+                                            <dt class="col-sm-4">ABLE TO CARE FOR PETS</dt>
+                                            <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i></dd>                                             -->
+                                            <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{% if data.willingness.care_pets == True %} Yes 
+                                                {%elif data.willingness.care_pets == False %}
+                                            No 
+                                        {% else %}
+                                    {% endif %} </dd>                            
+                                        </dl>
+                                        <dl class="dl-horizontal row rowleft">
+                                            <dt class="col-sm-4">ABLE TO WASH CAR</dt>
+                                            <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i></dd>                                             -->
+                                            <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{% if data.willingness.wash_car == True %} Yes 
+                                                {%elif data.willingness.wash_car == False %}
+                                            No 
+                                        {% else %}
+                                    {% endif %} </dd>                            
+                                        </dl>
+                                        <dl class="dl-horizontal row rowleft">
+                                            <dt class="col-sm-4">ABLE TO DO GARDENING WORKS</dt>
+                                            <!-- <dd class="col-sm-1"> <i class="fa fa-forward"></i></dd>                                             -->
+                                            <dd class="col-sm-3" style="border-left:2px solid lightgrey;">{% if data.willingness.gardening_works == True %} Yes 
+                                                {%elif data.willingness.gardening_works == False %}
+                                            No 
+                                        {% else %}
+                                    {% endif %} </dd>                            
+                                        </dl>                                                                                    
+                                    </div>
+                                <!-- Documents -->
+                                    <div class="tab-pane fade" id="documents" role="tabpanel" aria-labelledby="profile-tab">                                        
+                                        {% include 'FDWs/FDW_models/Add_Document.html' %}
+
+                                        <div class="rowleft"> 
+                                            <!-- document table start  -->
+                                            <div class="col">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <!-- <h4 class="header-title">Thead info</h4> -->
+                                                        <div class="single-table">
+                                                            <div class="table-responsive">
+                                                                <table class="table text-center">
+                                                                    <thead class="text-uppercase bg-info">
+                                                                        <tr class="text-white">
+                                                                            <th scope="col">S/N</th>
+                                                                            <th scope="col">DOCUMENT TITLE</th>
+                                                                            <th scope="col">ACTIONS</th>
+                                                                            <!-- <th scope="col">price</th> -->
+                                                                            <!-- <th scope="col">action</th> -->
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        {% for doc in doc %}
+                                                                        <tr>
+                                                                            <th scope="row">1</th>
+                                                                            <td>{{doc.title}}</td>
+                                                                            <td><a href="{{doc.Doc.url}}"><i class="fa fa-download mr-1 fa-lg" ></i></a>
+                                                                                 <a data-toggle="modal" data-target="#document_edit_modal"><i class="fa fa-edit mr-1 fa-lg" ></i></a>
+                                                                                 <a href="{% url 'delete_doc' doc.id %}"><i class="ti-trash fa-lg"></i></a>
+                                                                            </td>                                                                            
+                                                                        </tr>   
+                                                                        {% include 'FDWs/FDW_models/edit_document.html' %}
+                                                                        {%endfor%}                                                                     
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- document table end -->
+                                        </div>   
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    <!-- left align tab end -->
+                    
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+{% block js %}
+<script>
+    setTimeout(function () {
+        // Closing the alert
+        $('#notification').alert('close');
+    }, 5000);
+</script>
+{% endblock %}

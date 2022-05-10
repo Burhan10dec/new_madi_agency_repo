@@ -1,0 +1,181 @@
+<div class="modal fade" id="branch-modal-{{branch.id}}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Main Branch Office Hours</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <!--Time Forms-->
+                <form class="needs-validation" enctype="multipart/form-data" method="POST" action="{% url 'edit_office_hour' branch.id%}" nonvaidate>{% csrf_token %}
+                                <div class="form-row align-items-center">
+                                    <div class="col-sm-4 my-1">
+                                        <label for="agencyOfficeBranchName"><strong> Branch Name</strong></label>
+                                    </div>
+                                    <div class="col-sm-8 my-1">
+                                        <!-- <input type="text" class="form-control" id="agencyOfficeBranchName" placeholder=""> -->
+                                        <label for="agencyOfficeBranchName"><strong>{{branch.branch_name}}</strong></label>
+                                    </div>
+                                </div>
+                            
+                                <div class="form-row align-items-center">
+                                    <div class="col-sm-4 my-1">
+                                        <label for="agencyOfficeBranchName"><strong>Monday</strong></label>
+                                    </div>
+                                    <div class="col-sm-8 my-1">
+                                        <div class="row">
+                                            <div class="col-sm-6 my-1">
+                                                <input class="form-control form-control-sm" type="time" name="monday_start" id="example-time-input">
+                                            </div>
+                                            <div class="col-sm-6 my-1">
+                                                <input class="form-control form-control-sm" type="time" name="monday_end" id="example-time-input">
+                                            </div>
+                                         </div>    
+                                    </div>
+                                </div>
+                            
+                                <div class="form-row align-items-center">
+                                    <div class="col-sm-4 my-1">
+                                        <label for="agencyOfficeBranchName"><strong>Tuesday</strong></label>
+                                    </div>
+                                    <div class="col-sm-8 my-1">
+                                        <div class="row">
+                                            <div class="col-sm-6 my-1">
+                                                <input class="form-control form-control-sm" type="time" name="tuesday_start" id="example-time-input">
+                                            </div>
+                                            <div class="col-sm-6 my-1">
+                                                <input class="form-control form-control-sm" type="time" name="tuesday_end" id="example-time-input">
+                                            </div>
+                                         </div>    
+                                    </div>
+                                </div>
+                            
+                                <div class="form-row align-items-center">
+                                    <div class="col-sm-4 my-1">
+                                        <label for="agencyOfficeBranchName"><strong>Wednesday</strong></label>
+                                    </div>
+                                    <div class="col-sm-8 my-1">
+                                        <div class="row">
+                                            <div class="col-sm-6 my-1">
+                                                <input class="form-control form-control-sm" type="time" name="wednesday_start" id="example-time-input">
+                                            </div>
+                                            <div class="col-sm-6 my-1">
+                                                <input class="form-control form-control-sm" type="time" name="wednesday_end" id="example-time-input">
+                                            </div>
+                                         </div>    
+                                    </div>
+                                </div>
+                            
+                                <div class="form-row align-items-center">
+                                    <div class="col-sm-4 my-1">
+                                        <label for="agencyOfficeBranchName"><strong>Thursday</strong></label>
+                                    </div>
+                                    <div class="col-sm-8 my-1">
+                                        <div class="row">
+                                            <div class="col-sm-6 my-1">
+                                                <input class="form-control form-control-sm" type="time" name="thursday_start" id="example-time-input">
+                                            </div>
+                                            <div class="col-sm-6 my-1">
+                                                <input class="form-control form-control-sm" type="time" name="thursday_end" id="example-time-input">
+                                            </div>
+                                         </div>    
+                                    </div>
+                                </div>
+                            
+                                <div class="form-row align-items-center">
+                                    <div class="col-sm-4 my-1">
+                                        <label for="agencyOfficeBranchName"><strong>Friday</strong></label>
+                                    </div>
+                                    <div class="col-sm-8 my-1">
+                                        <div class="row">
+                                            <div class="col-sm-6 my-1">
+                                                <input class="form-control form-control-sm" type="time" name="friday_start" id="example-time-input">
+                                            </div>
+                                            <div class="col-sm-6 my-1">
+                                                <input class="form-control form-control-sm" type="time" name="friday_end" id="example-time-input">
+                                            </div>
+                                         </div>    
+                                    </div>
+                                </div>
+                            
+                                <div class="form-row align-items-center">
+                                    <div class="col-sm-4 my-1">
+                                        <label for="agencyOfficeBranchName"><strong>Saturday</strong></label>
+                                    </div>
+                                    <div class="col-sm-8 my-1">
+                                        <div class="row">
+                                            <div class="col-sm-6 my-1">
+                                                <input class="form-control form-control-sm" type="time"e="saturday_start" id="example-time-input">
+                                            </div>
+                                            <div class="col-sm-6 my-1">
+                                                <input class="form-control form-control-sm" type="time" name="saturday_end" id="example-time-input">
+                                            </div>
+                                         </div>    
+                                    </div>
+                                </div>
+                            
+                                <div class="form-row align-items-center">
+                                    <div class="col-sm-4 my-1">
+                                        <label for="agencyOfficeBranchName"><strong>Sunday</strong></label>
+                                    </div>
+                                    <div class="col-sm-8 my-1">
+                                        <div class="row">
+                                            <div class="col-sm-6 my-1">
+                                                <input class="form-control form-control-sm" type="time" name="sunday_start" id="example-time-input">
+                                            </div>
+                                            <div class="col-sm-6 my-1">
+                                                <input class="form-control form-control-sm" type="time" name="sunday_end" id="example-time-input">
+                                            </div>
+                                         </div>    
+                                    </div>
+                                </div>
+                            
+                                <!-- <div class="form-row align-items-center">
+                                    <div class="col-sm-4 my-1">
+                                        <label for="agencyOfficeBranchName"><strong>Public Holiday</strong></label>
+                                    </div>
+                                    <div class="col-sm-8 my-1">
+                                        <div class="row">
+                                            <div class="col-sm-6 my-1">
+                                                <input class="form-control form-control-sm" type="time" value="{{branch.office_hours.public_holiday_start_time}}" name="public_holiday_start" id="example-time-input">
+                                            </div>
+                                            <div class="col-sm-6 my-1">
+                                                <input class="form-control form-control-sm" type="time" value="13:45:00" name="public_holiday_end" id="example-time-input">
+                                            </div>
+                                         </div>    
+                                    </div>
+                                </div> -->
+                            
+                                <div class="form-row align-items-center">
+                                    <div class="col-sm-4 my-1">
+                                        <label for="agencyOfficeBranchName"><strong>Lunch Time</strong></label>
+                                    </div>
+                                    <div class="col-sm-8 my-1">
+                                        <div class="row">
+                                            <div class="col-sm-6 my-1">
+                                                <input class="form-control form-control-sm" type="time" name="lunch_start" id="example-time-input">
+                                            </div>
+                                            <div class="col-sm-6 my-1">
+                                                <input class="form-control form-control-sm" type="time" name="lunch_end" id="example-time-input">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row align-items-center">
+                                    <div class="col-sm-4 my-1">
+                                        <label for="agencyOfficeNotes"><strong>Notes</strong></label>
+                                    </div>
+                                    <div class="col-sm-8 my-1">
+                                        <input type="text" class="form-control form-control-sm" id="agencyOfficeNotes" value="{{branch.office_hours.notes}}" name="notes" placeholder="">
+                                    </div>
+                                </div>         
+                                          
+                <!--Time Forms-->
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Save Data</button>
+                    </div>
+                </form>
+            </div> 
+            </div>            
+        </div>
+    </div>
